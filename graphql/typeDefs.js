@@ -8,6 +8,15 @@ module.exports = gql `
         username: String!
         createdAt: String!
     }
+    type Note {
+        id: ID!
+        body: String!
+        type: String!
+        username: String!
+        isArchived: Boolean!
+        createdAt: String!
+    }
+    
     input RegisterInput {
         username: String!
         password: String!
@@ -15,10 +24,14 @@ module.exports = gql `
         email: String!
     }
     type Query {
-        getNotes: [User]
+        getNotes: [Note]
+        getNote(noteId: ID!): Note
     }
     type Mutation {
         register(registerInput: RegisterInput): User!
         login(username: String!, password: String): User!
+        createNote(body: String!, type: String!): Note!
+        deleteNote(noteId: ID!): String!
+        editNote(noteId: ID!, body: String!): Note!
     }
 `;
