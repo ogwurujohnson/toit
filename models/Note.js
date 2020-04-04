@@ -6,7 +6,7 @@ const {
 const noteSchema = new Schema({
     body: String,
     type: String,
-    isDeleted: Boolean,
+    isArchived: Boolean,
     username: String,
     createdAt: String,
     user: {
